@@ -17,7 +17,7 @@ public class ConsumptionService {
     private final ConsumptionRepository consumptionRepository;
     private final CategoryService categoryService;
 
-    public Consumption createDebit(Integer categoryId, Double value, LocalDateTime debitTime, String description) {
+    public Consumption createConsumption(Integer categoryId, Double value, LocalDateTime debitTime, String description) {
         Category category = categoryService.getById(categoryId).orElseThrow(() -> new EntityNotFoundException("category"));
 
         Consumption consumption = new Consumption();
