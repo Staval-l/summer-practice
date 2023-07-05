@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ConsumptionRepository extends CrudRepository<Consumption, Long> {
-    List<Consumption> findAllByConsumptionTimeBetweenOrderByConsumptionTime(LocalDate dateFrom, LocalDate dateTo);
+    List<Consumption> findAllByCreateTimeBetweenOrderByCreateTime(LocalDate dateFrom, LocalDate dateTo);
 }

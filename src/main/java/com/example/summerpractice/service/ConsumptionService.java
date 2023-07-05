@@ -30,6 +30,6 @@ public class ConsumptionService {
     }
 
     public List<Consumption> getAllForPeriod(LocalDate dateFrom, LocalDate dateTo) {
-        return consumptionRepository.findAllByConsumptionTimeBetweenOrderByConsumptionTime(dateFrom, dateTo);
+        return consumptionRepository.findAllByCreateTimeBetweenOrderByCreateTime(dateFrom, dateTo);
     }
 }
