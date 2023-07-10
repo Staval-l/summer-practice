@@ -1,11 +1,7 @@
 package com.example.summerpractice.controller;
 
 import com.example.summerpractice.dto.ResponseGetDto;
-import com.example.summerpractice.dto.consumption.ConsumptionGetDto;
 import com.example.summerpractice.dto.consumption.ConsumptionPostDto;
-import com.example.summerpractice.dto.consumption.ConsumptionRequestDto;
-import com.example.summerpractice.dto.consumption.ConsumptionResponseDto;
-import com.example.summerpractice.model.Category;
 import com.example.summerpractice.model.Consumption;
 import com.example.summerpractice.service.ConsumptionService;
 import com.example.summerpractice.util.ResponseFactory;
@@ -31,16 +27,21 @@ public class ConsumptionController {
         return ResponseFactory.createSuccessfulResponse(debitService.createConsumption(request.getCategoryId(), request.getValue(), request.getDebitTime(), request.getDescription()));
     }
 
-    @PostMapping("/statistic")
-    public ResponseGetDto<ConsumptionResponseDto> generateStatistic(@RequestBody ConsumptionRequestDto request) {
-//        List<ConsumptionGetDto> debits = debitService.getAllForPeriod(request.getDateFrom(), request.getDateTo()).stream()
-//                .map(debitMapper::toDto)
-//                .collect(Collectors.toList());
-        List<Consumption> debits = debitService.getAllForPeriod(request.getDateFrom(), request.getDateTo()).stream().collect(Collectors.toList());
-//        return ResponseFactory.createSuccessfulResponse(new ConsumptionResponseDto(
-//                debits,
-//                debits.stream().map(Consumption::getValue).reduce(0D, Double::sum)));
-        return ResponseFactory.createSuccessfulResponse((ConsumptionResponseDto) debits.stream().collect(Collectors.toList()));
+//    @PostMapping("/statistic")
+//    public ResponseGetDto<ConsumptionResponseDto> generateStatistic(@RequestBody ConsumptionRequestDto request) {
+////        List<ConsumptionGetDto> debits = debitService.getAllForPeriod(request.getDateFrom(), request.getDateTo()).stream()
+////                .map(debitMapper::toDto)
+////                .collect(Collectors.toList());
+//        List<Consumption> debits = debitService.getAllForPeriod(request.getDateFrom(), request.getDateTo()).stream().collect(Collectors.toList());
+////        return ResponseFactory.createSuccessfulResponse(new ConsumptionResponseDto(
+////                debits,
+////                debits.stream().map(Consumption::getValue).reduce(0D, Double::sum)));
+//        return ResponseFactory.createSuccessfulResponse((ConsumptionResponseDto) debits.stream().collect(Collectors.toList()));
+//    }
+
+    @PostMapping
+    public ConsumptionPostDto createGame(@RequestBody ConsumptionPostDto dto) {
+        return dto;
     }
 
     @GetMapping("/getConsumption")
