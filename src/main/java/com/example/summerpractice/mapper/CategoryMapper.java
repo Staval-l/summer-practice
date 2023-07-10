@@ -8,5 +8,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = "com.example.summerpractice")
 @Mapper(config = MapConfig.class)
 public interface  CategoryMapper {
-    CategoryGetDto toDto(Category category);
+    //CategoryGetDto toDto(Category category);
 }

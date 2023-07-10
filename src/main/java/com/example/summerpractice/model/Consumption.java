@@ -1,10 +1,7 @@
 package com.example.summerpractice.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -17,13 +14,17 @@ import java.time.LocalDateTime;
 public class Consumption {
     @Id
     private long id;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category_id;
+
     @Column
     private double value;
+
     @Column
     private LocalDateTime createTime;
+
     @Column
     private String description;
 }

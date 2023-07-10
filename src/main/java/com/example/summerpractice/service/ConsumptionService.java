@@ -3,13 +3,17 @@ package com.example.summerpractice.service;
 import com.example.summerpractice.model.Category;
 import com.example.summerpractice.model.Consumption;
 import com.example.summerpractice.repository.ConsumptionRepository;
+import com.example.summerpractice.util.CategoryHelper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +35,10 @@ public class ConsumptionService {
 
     public List<Consumption> getAllForPeriod(LocalDate dateFrom, LocalDate dateTo) {
         return consumptionRepository.findAllByCreateTimeBetweenOrderByCreateTime(dateFrom, dateTo);
+    }
+
+    public List<Consumption> getAll() {
+//        return consumptionRepository.getConsumptions();
+        return StreamSupport.stream(consumptionRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 }

@@ -1,9 +1,8 @@
 package com.example.summerpractice.controller;
 
 import com.example.summerpractice.dto.ResponseGetDto;
-import com.example.summerpractice.dto.category.CategoryGetDto;
 import com.example.summerpractice.dto.category.CategoryPostDto;
-import com.example.summerpractice.mapper.CategoryMapper;
+import com.example.summerpractice.model.Category;
 import com.example.summerpractice.service.CategoryService;
 import com.example.summerpractice.util.ResponseFactory;
 import lombok.RequiredArgsConstructor;
@@ -20,17 +19,19 @@ import java.util.stream.Collectors;
 public class CategoryController {
 
     private final CategoryService categoryService;
-    private final CategoryMapper categoryMapper;
+    //private final CategoryMapper categoryMapper;
 
     @PutMapping
-    public ResponseGetDto<CategoryGetDto> createCategory(@RequestBody CategoryPostDto request) {
-        return ResponseFactory.createSuccessfulResponse(categoryMapper.toDto(categoryService.createCategory(request.getName())));
+    public ResponseGetDto<Category> createCategory(@RequestBody CategoryPostDto request) {
+        //return ResponseFactory.createSuccessfulResponse(categoryMapper.toDto(categoryService.createCategory(request.getName())));
+        return ResponseFactory.createSuccessfulResponse(categoryService.createCategory(request.getName()));
     }
 
     @GetMapping("/all")
-    public ResponseGetDto<List<CategoryGetDto>> getAll() {
-        return ResponseFactory.createSuccessfulResponse(categoryService.getAllCategories().stream()
-                .map(categoryMapper::toDto)
-                .collect(Collectors.toList()));
+    public ResponseGetDto<List<Category>> getAll() {
+//        return ResponseFactory.createSuccessfulResponse(categoryService.getAllCategories().stream()
+//                .map(categoryMapper::toDto)
+//                .collect(Collectors.toList()));
+        return ResponseFactory.createSuccessfulResponse(categoryService.getAllCategories().stream().collect(Collectors.toList()));
     }
 }
