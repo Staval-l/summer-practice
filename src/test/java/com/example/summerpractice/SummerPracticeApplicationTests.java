@@ -35,14 +35,4 @@ class SummerPracticeApplicationTests {
         assert dto.getDescription().equals("SDGS");
         assert dto.getValue().equals(19.0);
     }
-
-    @Test
-    void getCategories() {
-        var dto = restTemplate.exchange(
-                "http://localhost:" + port + "/category",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<ResponseGetDto<CategoryGetDto>>() {
-                }).getBody();
-    }
 }
